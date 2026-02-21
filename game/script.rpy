@@ -135,7 +135,7 @@ label start:
 
         # Проверка
         if user_input == "718":
-            me "Открылась... Кто же внутри..."
+            me "Открылась... Кто же внутри...."
             play music "audio/loshadka_skryptonite.mp3" fadein 2.0
             scene pin_inside
             me "Не может... Не может быть... Это же..."
