@@ -1,13 +1,16 @@
 ﻿# Characters
 
-define me = Character('Филипп', color="#c8ffc8")
+define me = Character('Мирон', color="#c8ffc8")
+define thought = Character(None, kind=me, what_italic=True, what_prefix="(", what_suffix=")")
+define sophie = Character('София', color="#ffc8c8")
 define hobo = Character('Бездомный', color="#008e00")
 define phone = Character('Телефон', color="#0000ff")
 define anonym = Character('Голос', color="#0000ff")
 
 # Variables
 
-define me_gave_money = False
+default inventory = []
+default me_gave_money = False
 
 # Configurations
 
@@ -17,15 +20,23 @@ transform sprite_scaler:
 
 image hobo = At("hobo.png", sprite_scaler)
 
+
+
 # Script
 
 label start:
 
     scene living_room
 
-    me "Удивительный день... Хватит лежать на диване."
-    me "Пора бы делом заняться. Мусорный бак переполнен. Нужно вынести мусор."
-    me "Осмотреть хату перед выходом что ли?"
+    "Дзын! Дзынь! Дзынь!"
+    thought "Ек. Проспал."
+    "Дзын! Дзынь! Дзынь!"
+    thought "Это Соня"
+    me "Алло?"
+    sophie "Привет, Мирон! Где Ты?"
+    me "..."
+    me "Дома. Я только что проснулся."
+    me ""
 
     jump where_to_go_menu
 
@@ -148,4 +159,19 @@ label start:
             "Ошибка! Неверный пароль."
             jump horse_ending_password_enter
 
-        
+# show screen inventory_button # Показываем кнопку в углу
+    
+# "Вы нашли старый рюкзак."
+    
+# $ add_item("Яблоко")
+# $ add_item("Jeep")
+
+# "Теперь в вашем инвентаре есть пара вещей. Проверьте кнопку слева!"
+
+# $ add_item("Мопед")
+
+# "Боо"
+
+# return
+
+    

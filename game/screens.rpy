@@ -4,6 +4,47 @@
 
 init offset = -1
 
+# Screens
+
+screen inventory_button():
+    imagebutton:
+        idle "backpack_dark.png"    # Путь к вашей картинке (в обычном состоянии)
+        hover "backpack.png"  # Путь к картинке при наведении
+        xpos 20
+        yalign 0.95                      # Слева внизу
+        action Show("inventory_screen")
+
+screen inventory_screen():
+    modal True # Делает экран модальным (нельзя кликать по сюжету, пока открыт рюкзак)
+    tag menu     # Позволяет закрывать экран кнопкой Esc
+
+    # Фон инвентаря (можно заменить на картинку frame "bg_paper.png")
+    frame:
+        align (0.5, 0.5)
+        xsize 600 ysize 400
+        
+        vbox:
+            label "Рюкзак" xalign 0.5
+            
+            # Сетка предметов
+            vpgrid:
+                cols 4
+                spacing 10
+                draggable True
+                mousewheel True
+                scrollbars "vertical"
+
+                if len(inventory) > 0:
+                    for item in inventory:
+                        # Здесь каждая кнопка — это предмет
+                        textbutton item action NullAction() # Пока просто текст
+                else:
+                    text "Пусто" xalign 0.5
+
+            # Кнопка закрытия
+            textbutton "Закрыть" action Hide("inventory_screen") xalign 0.5
+
+
 
 ################################################################################
 ## Стили
